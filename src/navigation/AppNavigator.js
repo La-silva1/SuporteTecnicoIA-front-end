@@ -1,15 +1,14 @@
 // src/navigation/AppNavigator.js
-import { createStackNavigator } from '@react-navigation/stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import AgradecimentoAvaliacaoScreen from '../screens/AgradecimentoAvaliacaoScreen';
 import AvaliarChamadoScreen from '../screens/AvaliarChamadoScreen';
 import LoginScreen from '../screens/LoginScreen';
 import MeusChamadosScreen from '../screens/MeusChamadosScreen';
 import NovoChamadoScreen from '../screens/NovoChamadoScreen';
 import RegisterScreen from '../screens/RegisterScreen';
-import AgradecimentoAvaliacaoScreen from '../screens/AgradecimentoAvaliacaoScreen';
 import SucessoScreen from '../screens/SucessoScreen';
 
-const Stack = createStackNavigator();
-
+const Stack = createNativeStackNavigator();
 export default function AppNavigator() {
   return (
     <Stack.Navigator initialRouteName="Login">

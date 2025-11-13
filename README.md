@@ -27,6 +27,16 @@ O aplicativo é composto pelas seguintes telas:
 *   [Expo](https://expo.dev/)
 *   [React Navigation](https://reactnavigation.org/)
 
+## Backend
+
+Para o funcionamento completo da aplicação, é necessário que o backend esteja em execução. O backend é responsável por toda a lógica de negócios, autenticação e gerenciamento de dados.
+
+Você pode encontrar o repositório do backend no seguinte link:
+
+[La-silva1/SuporteTecnicoIA](https://github.com/La-silva1/SuporteTecnicoIA)
+
+Siga as instruções no `README.md` do repositório do backend para configurá-lo e executá-lo.
+
 ## Como Começar
 
 Siga as instruções abaixo para configurar e executar o projeto em seu ambiente de desenvolvimento.
@@ -72,6 +82,34 @@ Após a instalação, você pode usar os seguintes scripts para iniciar o aplica
     ```bash
     npm run web
     ```
+
+## Executando com Docker
+
+Você também pode executar o ambiente de desenvolvimento usando Docker.
+
+### Pré-requisitos
+
+*   [Docker](https://www.docker.com/get-started)
+
+### Build da Imagem
+
+Primeiro, construa a imagem Docker a partir do `Dockerfile` na raiz do projeto:
+
+```bash
+docker build -t connectway-frontend .
+```
+
+### Executando o Container
+
+Após o build da imagem, inicie o container. Isso irá iniciar o servidor de desenvolvimento do Expo para a web na porta 8081.
+
+```bash
+docker run -p 8081:8081 connectway-frontend
+```
+
+Acesse a aplicação em seu navegador no endereço `http://localhost:8081`.
+
+**Observação:** Esta configuração é destinada apenas para o ambiente de desenvolvimento. O arquivo `nginx.conf` no projeto sugere uma configuração para produção, que exigiria um `Dockerfile` de múltiplos estágios para construir os arquivos estáticos e servi-los com Nginx.
 
 ## Estrutura do Projeto
 

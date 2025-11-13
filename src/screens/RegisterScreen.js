@@ -1,14 +1,14 @@
 import { useState } from "react";
 import {
-    Alert,
-    ScrollView,
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableOpacity
+  Alert,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
 } from "react-native";
-import { criarConta } from "../api/api";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import api from "../api/api";
 
 export default function RegistrarScreen({ navigation }) {
   const [dados, setDados] = useState({
@@ -32,25 +32,50 @@ export default function RegistrarScreen({ navigation }) {
   const handleCriarConta = async () => {
     console.log("🟢 Botão Criar Conta clicado!");
 
-    if (!dados.nome || !dados.email || !dados.senha) {
+    const { nome, email, senha } = dados;
+
+    if (!nome || !email || !senha) {
       Alert.alert("Atenção", "Preencha nome, e-mail e senha.");
       return;
     }
 
     try {
-      console.log("📦 Enviando dados:", dados);
-      const response = await api.post('/usuarios/register', {
-            nome,
-            email,
-            senha,
-          });
-          navigation.navigate('NovoChamado');
-        } catch (err) {
-      console.log("❌ Erro no criarConta:", err.response || err);
-      Alert.alert("Erro", err.message || "Falha ao criar conta.");
+      console.log("📦 Enviando dados para registro:", dados);
+      const response = await api.post("/usuarios/register", dados);
+
+      console.log("✅ Resposta do backend:", response.data);
+      const token = response.data.token || response.data.Token;
+
+      if (token) {
+        await AsyncStorage.setItem("token", token);
+        console.log("🔑 Token salvo com sucesso!");
+
+        Alert.alert("Sucesso!", "Conta criada com sucesso.", [
+          {
+            text: "OK",
+            onPress: () =>
+              navigation.replace("Novo Chamado", {
+                nome: response.data.nome || response.data.Nome || nome,
+              }),
+          },
+        ]);
+      } else {
+        console.log("❌ Token não encontrado na resposta do backend.");
+        Alert.alert(
+          "Erro de Autenticação",
+          "Registro bem-sucedido, mas não foi possível autenticar. Por favor, tente fazer o login."
+        );
+        navigation.navigate("Login");
+      }
+    } catch (err) {
+      console.log("❌ Erro no criarConta:", err.response?.data || err.message);
+      Alert.alert(
+        "Erro no Cadastro",
+        err.response?.data?.message ||
+          "Não foi possível criar a conta. Verifique os dados e tente novamente."
+      );
     }
   };
-
 
   return (
     <ScrollView contentContainerStyle={styles.container}>

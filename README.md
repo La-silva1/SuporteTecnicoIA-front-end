@@ -1,50 +1,92 @@
-# Welcome to your Expo app 👋
+# ConnectWay
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+O ConnectWay é um aplicativo móvel de gerenciamento de chamados, permitindo que os usuários criem, visualizem e avaliem seus chamados de suporte.
 
-## Get started
+## Funcionalidades
 
-1. Install dependencies
+*   **Autenticação:** Sistema de login e registro de usuários.
+*   **Criação de Chamados:** Formulário para abrir um novo chamado de suporte.
+*   **Listagem de Chamados:** Tela para visualizar o histórico de chamados abertos.
+*   **Avaliação de Chamados:** Permite que o usuário avalie o atendimento recebido.
 
-   ```bash
-   npm install
-   ```
+## Telas
 
-2. Start the app
+O aplicativo é composto pelas seguintes telas:
 
-   ```bash
-   npx expo start
-   ```
+*   `LoginScreen`: Tela de login para acesso ao sistema.
+*   `RegisterScreen`: Tela de cadastro de novos usuários.
+*   `NovoChamadoScreen`: Formulário para a criação de um novo chamado.
+*   `MeusChamadosScreen`: Lista todos os chamados abertos pelo usuário.
+*   `AvaliarChamadoScreen`: Permite ao usuário avaliar um chamado específico.
+*   `SucessoScreen`: Tela de confirmação de sucesso após a criação de um chamado.
+*   `AgradecimentoAvaliacaoScreen`: Tela de agradecimento após a avaliação de um chamado.
 
-In the output, you'll find options to open the app in a
+## Tecnologias Utilizadas
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+*   [React Native](https://reactnative.dev/)
+*   [Expo](https://expo.dev/)
+*   [React Navigation](https://reactnavigation.org/)
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## Como Começar
 
-## Get a fresh project
+Siga as instruções abaixo para configurar e executar o projeto em seu ambiente de desenvolvimento.
 
-When you're ready, run:
+### Pré-requisitos
 
-```bash
-npm run reset-project
+*   [Node.js](https://nodejs.org/) (versão LTS recomendada)
+*   [Expo CLI](https://docs.expo.dev/get-started/installation/)
+*   Um dispositivo físico ou emulador para executar o aplicativo.
+
+### Instalação
+
+1.  Clone o repositório:
+    ```bash
+    git clone https://github.com/seu-usuario/frontend-connectway.git
+    ```
+2.  Navegue até o diretório do projeto:
+    ```bash
+    cd frontend-connectway
+    ```
+3.  Instale as dependências:
+    ```bash
+    npm install
+    ```
+
+### Executando o Projeto
+
+Após a instalação, você pode usar os seguintes scripts para iniciar o aplicativo:
+
+*   Para iniciar o Metro Bundler e executar em um emulador ou dispositivo físico:
+    ```bash
+    npm start
+    ```
+*   Para executar no Android:
+    ```bash
+    npm run android
+    ```
+*   Para executar no iOS:
+    ```bash
+    npm run ios
+    ```
+*   Para executar a versão web:
+    ```bash
+    npm run web
+    ```
+
+## Estrutura do Projeto
+
 ```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+frontend-connectway/
+├─── assets/              # Imagens, fontes e outros assets
+├─── components/          # Componentes reutilizáveis da UI
+├─── constants/           # Constantes do aplicativo (cores, temas)
+├─── hooks/               # Hooks customizados do React
+├─── src/
+│   ├─── api/             # Lógica de comunicação com a API
+│   ├─── navigation/      # Configuração da navegação do app
+│   ├─── screens/         # Telas principais do aplicativo
+│   └─── theme/           # Arquivos de tema
+├─── App.js               # Ponto de entrada principal do app
+├─── package.json         # Dependências e scripts do projeto
+└─── README.md            # Este arquivo
+```

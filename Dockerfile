@@ -14,7 +14,7 @@ RUN npm install --legacy-peer-deps
 # Copia o restante dos arquivos e executa o build para web
 COPY . .
 # Limpa o cache do Expo antes de construir e depois executa o build para web
-RUN npx expo clean && npx expo export:web
+RUN npm exec expo clean && npm exec expo export:web
 
 # ... (restante do Dockerfile)
 

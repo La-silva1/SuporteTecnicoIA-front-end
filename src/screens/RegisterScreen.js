@@ -39,25 +39,13 @@ export default function RegistrarScreen({ navigation }) {
 
     try {
       console.log("📦 Enviando dados:", dados);
-      const res = await criarConta(dados);
-      console.log("✅ Resposta do backend:", res);
-
-      const token = res.token || res.Token;
-      if (token) {
-        await AsyncStorage.setItem("token", token);
-      }
-
-      Alert.alert("Sucesso!", "Conta criada com sucesso.", [
-        {
-          text: "OK",
-          onPress: () =>
-            navigation.replace("Meus Chamados", {
-              token: token,
-              nome: res.nome || res.Nome,
-            }),
-        },
-      ]);
-    } catch (err) {
+      const response = await api.post('/usuarios/register', {
+            nome,
+            email,
+            senha,
+          });
+          navigation.navigate('NovoChamado');
+        } catch (err) {
       console.log("❌ Erro no criarConta:", err.response || err);
       Alert.alert("Erro", err.message || "Falha ao criar conta.");
     }

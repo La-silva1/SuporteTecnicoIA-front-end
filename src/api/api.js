@@ -3,7 +3,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://srv1119481.hstgr.cloud:8080", // <- seu backend .NET
+  baseURL: "https://srv1119481.hstgr.cloud/api", // <- seu backend .NET
   headers: {
     "Content-Type": "application/json"
   }

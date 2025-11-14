@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import api from "../api/api";
+import api, { criarConta } from "../api/api";
 
 export default function RegistrarScreen({ navigation }) {
   const [dados, setDados] = useState({
@@ -41,7 +41,7 @@ export default function RegistrarScreen({ navigation }) {
 
     try {
       console.log("📦 Enviando dados para registro:", dados);
-      const response = await api.post("/usuarios/register", dados);
+      const response = await criarConta(dados);
 
       console.log("✅ Resposta do backend:", response.data);
       const token = response.data.token || response.data.Token;
